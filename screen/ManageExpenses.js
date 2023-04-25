@@ -1,14 +1,14 @@
-import { useLayoutEffect } from "react";
+import { useContext, useLayoutEffect } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import IcomButton from "../components/Ui/IconButton";
 import { GlobalStyles } from "../constant/Styles";
 import Button from "../components/Ui/Button";
-
+import {ExpensesContext } from '../store/expenses-context'
 function ManageExpenses({ route, navigation }) {
 
-
-    const editExpenses = route.params?.ExpensId;
-    const isEdit = !!editExpenses;
+ const expensesCtx=useContext(ExpensesContext);
+    const editExpenseId = route.params?.ExpensId;
+    const isEdit = !!editExpenseId;
     
       useLayoutEffect(() => {
         navigation.setOptions({
@@ -17,7 +17,8 @@ function ManageExpenses({ route, navigation }) {
       }, [navigation, isEdit]);
      
     function deleteItem() {
-        console.log("test");
+      expensesCtx.deleteExpense(editExpenseId)
+       navigation.goBack()
     }
 
     function cancelHundler()
@@ -26,7 +27,26 @@ function ManageExpenses({ route, navigation }) {
     }
 
     function confirmlHundler()
-    {}
+    {
+      if(isEdit){
+        expensesCtx.updateExpense(
+          editExpenseId
+          ,{
+          dis:'tes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!',
+          amount: 133.54,
+       date: new Date("2023-4-12"),
+        })
+      }else{
+        expensesCtx.addExpense({
+          
+            dis:'tes123 for hard code test',
+            amount: 133.54,
+         date: new Date("2023-4-12"),
+          
+        })
+      }
+      navigation.goBack()
+    }
 
   return (
     <View style={styles.container}>
