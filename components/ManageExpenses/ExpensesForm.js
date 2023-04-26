@@ -4,8 +4,8 @@ import { useState } from "react";
 import Button from '../Ui/Button'
 function ExpensesForm({submitButton,onCancel, onSubmit}){
 const [inputValues,setinputValues]=useState({
-    amount:'',
     dis:'',
+    amount:'',
     date:''
 })
 
@@ -21,8 +21,8 @@ const [inputValues,setinputValues]=useState({
 
 function submitionForm(){
 const expenseData={
-    amount:+inputValues.amount,
     dis:inputValues.dis,
+    amount:+inputValues.amount,
     date:new Date(inputValues.date) 
 }
 onSubmit(expenseData)
@@ -30,25 +30,25 @@ onSubmit(expenseData)
 
     return (
         <View>
+           <Input lable='dISCREBTION' textInputConfigration={{
+                keyboardType: 'default',
+                onChangeText:inputChangeHundeler.bind(this, 'dis'),
+                value:inputValues.dis,
+                multiline:true
+     
+            }}/>
             <Input lable='amount' textInputConfigration={{
                 keyboardType: 'decimal-pad',
                 onChangeText:inputChangeHundeler.bind(this, 'amount'),
                 value:inputValues.amount
 
             }}/>
-                <Input lable='Date' textInputConfigration={{
-                keyboardType: 'default',
-                onChangeText:inputChangeHundeler.bind(this, 'dis'),
-                value:inputValues.dis,
-                placeholder:"YYYY-MM-DD",
-                maxLength:10
-            }}/>
-               <Input lable='dISCREBTION' textInputConfigration={{
+               <Input lable='Date' textInputConfigration={{
                 keyboardType: 'default',
                 onChangeText:inputChangeHundeler.bind(this, 'date'),
                 value:inputValues.date,
-                multiline:true
-     
+                placeholder:"YYYY-MM-DD",
+                maxLength:10
             }}/>
               <View style={styles.buttons}>
             <Button style={styles.button} 
