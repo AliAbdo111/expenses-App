@@ -4,6 +4,7 @@ import IcomButton from "../components/Ui/IconButton";
 import { GlobalStyles } from "../constant/Styles";
 import Button from "../components/Ui/Button";
 import {ExpensesContext } from '../store/expenses-context'
+import ExpensesForm from "../components/ManageExpenses/ExpensesForm";
 function ManageExpenses({ route, navigation }) {
 
  const expensesCtx=useContext(ExpensesContext);
@@ -26,34 +27,24 @@ function ManageExpenses({ route, navigation }) {
         navigation.goBack()
     }
 
-    function confirmlHundler()
+    function confirmlHundler(expenseData)
     {
       if(isEdit){
         expensesCtx.updateExpense(
           editExpenseId
-          ,{
-          dis:'tes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!',
-          amount: 133.54,
-       date: new Date("2023-4-12"),
-        })
+          ,expenseData)
       }else{
-        expensesCtx.addExpense({
-          
-            dis:'tes123 for hard code test',
-            amount: 133.54,
-         date: new Date("2023-4-12"),
-          
-        })
+        expensesCtx.addExpense(expenseData)
       }
       navigation.goBack()
     }
 
   return (
     <View style={styles.container}>
-        <View style={styles.buttons}>
-            <Button style={styles.button} mode='flat' onPress={cancelHundler}>Cancel</Button>
-            <Button style={styles.button} onPress={confirmlHundler}>{isEdit?'update':'add'}</Button>
-        </View>
+      <ExpensesForm 
+      submitButton={isEdit?'Update':'Add'}
+      onCancel={cancelHundler}
+      onSubmit={confirmlHundler}/>
       {isEdit && (
         <View style={styles.deleteContaine}>
           <IcomButton
@@ -76,15 +67,7 @@ const styles = StyleSheet.create({
     padding: 24,
     backgroundColor: GlobalStyles.colors.primary800,
   },
-  buttons:{
-    flexDirection:"row",
-    justifyContent:'center',
-    alignItems:'center'
-  },
-  button:{
-    marginHorizontal:8,
-    minWidth:120
-  },
+ 
   deleteContaine: {
     marginTop: 16,
     paddingTop: 8,
