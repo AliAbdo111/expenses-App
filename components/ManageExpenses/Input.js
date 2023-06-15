@@ -19,14 +19,14 @@ const styles=StyleSheet.create({
         marginVertical:8
     },
     lable:{
-        color:GlobalStyles.colors.primary100,
+        color:GlobalStyles.colors.primary700,
         fontSize:12,
         marginBottom:4
     },
     input:{
         padding:6,
-        color:GlobalStyles.colors.primary700,
-        backgroundColor:GlobalStyles.colors.primary100,
+        color:GlobalStyles.colors.primary100,
+        backgroundColor:GlobalStyles.colors.primary700,
         borderRadius:4,
         fontSize:16
     }

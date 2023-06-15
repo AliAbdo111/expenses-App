@@ -31,7 +31,7 @@ export default ExpensItem;
 const styles= StyleSheet.create({
     expensItem:{
         padding: 12,
-        backgroundColor:GlobalStyles.colors.primary500,
+        backgroundColor:'white',
         marginVertical:8,
         flexDirection:'row',
         justifyContent:'space-between',
@@ -43,7 +43,7 @@ const styles= StyleSheet.create({
         shadowOpacity:0.4
     },
     TextBase:{
-        color:GlobalStyles.colors.primary50
+        color:GlobalStyles.colors.primary700
     },
     dis:{
         fontSize:16,
@@ -62,7 +62,7 @@ const styles= StyleSheet.create({
         opacity: 0.75,
       },
     amount:{
-        color:GlobalStyles.colors.primary500,
+        color:GlobalStyles.colors.primary700,
         fontWeight:'bold'
     }
 })
