@@ -59,8 +59,7 @@ const styles=StyleSheet.create({
         backgroundColor:"white",
         justifyContent:'center',
         alignItems: 'center',
-        margin:6,
-        padding:12
+        padding:7
     },
     shadowProp: {
         shadowColor: "#171717",
